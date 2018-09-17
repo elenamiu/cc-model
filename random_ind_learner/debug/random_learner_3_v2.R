@@ -528,7 +528,7 @@ three_learner <- function(r,sdev, to_learn){
 				}
 			}
 			else if(r3[slev-1]>0){
-				#if we know the previous level
+				#if we don' know the prev prev level but know the previous level
 				if(r3[slev+1]>0){
 					#if we know the next trait
 					if(r3[slev+2]>0){
@@ -538,8 +538,8 @@ three_learner <- function(r,sdev, to_learn){
 							for(i in 1:n){
 									payoffs[i] <- r[slev,i] + penalties[[slev+1]][r3[slev-1],i,r3[slev+1]] + penalties[[slev+2]][i,r3[slev+1],r3[slev+2]]
 							}
-							best <- which(payoffs == max(payoffs), arr.ind=T)
-							r3[slev] <- ifelse(nrow(best)>1,best[sample(nrow(best),1),1], best[1,1])
+							best <- which(payoffs == max(payoffs))
+							r3[slev] <- ifelse(length(best)>1,best[sample(length(best),1)], best[1])
 						} 
 					}
 					else{
@@ -655,6 +655,7 @@ three_learner <- function(r,sdev, to_learn){
 				else{
 					#if we don't know both the previous levels, learn from scratch (kind of?)
 					if(r3[slev-1]>0){
+                        #if we know the previous level
 						payoffs <- matrix(0,ncol=n,nrow=1)
 						for(i in 1:n){
 							payoffs[i] <- r[slev,i] + penalties[[slev+1]][r3[slev-1],i,r3[slev+1]]

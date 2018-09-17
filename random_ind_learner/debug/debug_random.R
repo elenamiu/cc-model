@@ -2,7 +2,7 @@ library(gridExtra)
 library(ggplot2)
 
 source("/Users/elena/Google Drive/ASU/mesoudi_model/random_ind_learner/debug/learners_window_3.R")
-source("/Users/elena/Google Drive/ASU/mesoudi_model/random_ind_learner/debug/random_learner_3_v2.R")
+source("~/Google Drive/ASU/mesoudi_model/random_ind_learner/debug/random_learner_3_v2.R")
 
 n<-10
 s<-10
