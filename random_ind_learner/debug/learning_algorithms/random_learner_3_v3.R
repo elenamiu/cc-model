@@ -38,6 +38,16 @@ calculate_penalties <- function(s,n,r,a){
 	return(penalties)
 }
 
+calculate_payoff <- function(s,n,r,a,repertoire){
+    penalties <- calculate_penalties(s,n,r,a)
+    tp <-r[1,repertoire[1]] + penalties[[2]][repertoire[1],repertoire[2]]
+    # + penalties for each of the following levels, according to repertoire
+    for (i in 3:s){
+        tp <- tp + penalties[[i]][repertoire[i-2],repertoire[i-1], repertoire[i]]
+    }
+    return(tp)
+}
+
 #######################
 ## learning algorithms 
 one_learner <-function(r,sdev, to_learn){

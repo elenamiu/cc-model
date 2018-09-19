@@ -13,6 +13,8 @@ source("~/Google Drive/ASU/mesoudi_model/random_ind_learner/debug/random_learner
  s<-20
 # n<-10
 # s<-10
+n<-5
+s<-5
 
 repeats <- 1000
 payoffs <- data.frame(pay=double(), algorithm=integer(), sdev=integer(), n=integer(), s= integer(), rep=integer())
@@ -40,10 +42,8 @@ payoffs$sdev <- as.factor(payoffs$sdev)
 
 
 # write.csv(payoffs,'//Users/elena/Google Drive/ASU/mesoudi_model/random_ind_learner/pics/dep3/data_payoffs_window_n10s10.csv')
-
-
 # payoffs<- read.csv('/Users/elena/Google Drive/ASU/mesoudi_model/task_difficulty/payoffs_window.csv')
-payoffs$sdev <- as.factor(payoffs$sdev)
+
 
 
 #PLOT
@@ -73,7 +73,9 @@ p <- ggplot(agg, aes(x = algorithm, y = pay, col=sdev)) +
 
 png("/Users/km102/Google Drive/ASU/mesoudi_model/random_ind_learner/debug/pics/repeats_1000runs_n10s10.png",width=400, height=400)
 
-png("/Users/km102/Google Drive/ASU/mesoudi_model/random_ind_learner/debug/pics/repeats_1000runs_n20s20.png",width=400, height=400)
+png("~/Google Drive/ASU/mesoudi_model/random_ind_learner/debug/pics/repeats_500runs_n20s20.png",width=400, height=400)
+
+png("~/Google Drive/ASU/mesoudi_model/random_ind_learner/debug/pics/repeats_1000runs_n5s5.png",width=400, height=400)
 p
 dev.off()
 
